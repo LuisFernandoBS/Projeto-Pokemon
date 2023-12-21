@@ -1,6 +1,6 @@
-'use client'
+'use client';
 import React from 'react';
-import { Navbar, Nav, Image, Row, Col } from 'react-bootstrap';
+import {Navbar, Nav, Image} from 'react-bootstrap';
 
 interface MenuLateralProps {
     id: string;
@@ -12,7 +12,7 @@ const MenuLateral: React.FC<MenuLateralProps> = ({ id }) => {
       <Navbar.Brand href="#home">
         <Image className='me-2' src="/favicon.ico" rounded  width={35} height={35}/>
         <p className='fs-6'>
-            PokeDeck Store
+            PokeDeck Store teste
         </p>
       </Navbar.Brand>
       <Nav className="flex-column gap-2">
