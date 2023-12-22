@@ -1,8 +1,8 @@
-import type { Metadata } from 'next'
 import Layout from '../components/LayoutInterno';
+import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Admin',
+  title: 'Perfil',
   description: 'Projeto Pokemon',
 }
 
@@ -14,6 +14,6 @@ export default function RootLayout({
   return (
     <Layout>
       {children}
-    </Layout>
+    </Layout> 
   )
 }
