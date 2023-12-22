@@ -1,0 +1,7 @@
+#divMenuLateral{
+    background-color: #ffffff;
+}
+
+#divMenuLateral>div>a{
+   padding-inline: 5px;
+}
