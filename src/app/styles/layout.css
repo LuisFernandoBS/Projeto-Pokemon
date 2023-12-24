@@ -1,19 +1,16 @@
 #divMenuLateral{
     background-color: #ffffff;
 }
-#menuLateral::before{
+#divMenuLateral #btnControlaMenu{
     width: 25px;
     height: 25px;
+    border: 0px;
     background-color: #8a439a;
     color: #ffffff;
     font-weight: bolder;
     font-family: monospace;
-    position: relative;
-    content: '>';
     border-radius: 20px;
     text-align: center;
-    left: 92%;
-    top: 15px;
     cursor: pointer;
 }
 
@@ -31,4 +28,61 @@
 
 #menuLateral div.row[href]:hover .col-lg>label{
     color: white;
+}
+
+#divMenuLateral.menu-aberto{
+    transition-property: all;
+    transition-timing-function: cubic-bezier(.67,.03,.57,.95);
+    transition-duration: 650ms;
+}
+
+/* Menu Fechado */
+
+#divMenuLateral.menu-fechado{
+    transition-property: all;
+    transition-timing-function: cubic-bezier(.67,.03,.57,.95);
+    transition-duration: 650ms;
+    max-width: 90px;
+}
+
+#divMenuLateral.menu-fechado>#menuLateral #btnControlaMenu{
+    left: 92%;
+    top: 15px;
+}
+
+#divMenuLateral.menu-fechado>#menuLateral p.h6{
+    transition-property: all;
+    transition-timing-function: ease-out;
+    transition-duration: 650ms;
+    display: none;
+}
+
+#divMenuLateral.menu-fechado>#menuLateral img[src="/img/eevee.png"]{
+    transition-property: all;
+    transition-timing-function: cubic-bezier(.67,.03,.57,.95);
+    transition-duration: 250ms;
+    transition-delay: 750ms;
+    margin-left: 16px;
+}
+
+#divMenuLateral.menu-fechado>#menuLateral div[role="button"] div.col-xl-2{
+    transition-property: all;
+    transition-timing-function: cubic-bezier(.67,.03,.57,.95);
+    transition-duration: 250ms;
+    transition-delay: 750ms;
+    margin-left: 15px;
+}
+
+#divMenuLateral.menu-fechado>#menuLateral div[role="button"] label, #divMenuLateral.menu-fechado>#menuLateral div[role="button"] div.align-self-center{
+    animation: disappearAnimation 650ms forwards;
+}
+
+@keyframes disappearAnimation {
+    0% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+      display: none;
+    }
 }
