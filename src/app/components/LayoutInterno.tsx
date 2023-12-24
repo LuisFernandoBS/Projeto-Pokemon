@@ -28,7 +28,7 @@ export default function LayoutInterno({
                 <button id="btnControlaMenu" onClick={toggleMenu}>{iconeBtnRecolheMenu}</button>
               </Col>
             </Row>
-            <MenuLateral id="menuLateral" />
+            <MenuLateral id="menuLateral" menuMinimizado={isMenuMinimized} />
           </Col>
           <Col sm md lg xl="auto">
             <Container fluid className={styles.main}>{children}</Container>

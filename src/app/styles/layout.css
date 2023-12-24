@@ -21,12 +21,18 @@
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
-#menuLateral div.row[href]:hover{
-    background: rgb(255,255,255);
-    background: linear-gradient(90deg, rgba(255,255,255,0.17970938375350143) 0%, rgb(227, 217, 244) 18%,rgba(213,187,254,1) 35%, rgb(224, 206, 255) 60%,rgb(224, 206, 255) 70%, rgba(255,255,255,0.18) 100%)
+#divMenuLateral.menu-aberto>#menuLateral div[role="button"]:hover{
+    transition-timing-function: cubic-bezier(.67,.03,.57,.95);
+    transition-duration: 400ms;
+    transition-delay: 0ms;
+    border-radius: 15px;
+    background-color: #80008063;
 }
 
 #menuLateral div.row[href]:hover .col-lg>label{
+    transition-timing-function: cubic-bezier(.67,.03,.57,.95);
+    transition-duration: 400ms;
+    transition-delay: 0ms;
     color: white;
 }
 
@@ -65,12 +71,24 @@
     margin-left: 16px;
 }
 
-#divMenuLateral.menu-fechado>#menuLateral div[role="button"] div.col-xl-2{
+#divMenuLateral.menu-fechado>#menuLateral div[role="button"] div.divImagemMenuLateral{
     transition-property: all;
     transition-timing-function: cubic-bezier(.67,.03,.57,.95);
     transition-duration: 250ms;
     transition-delay: 750ms;
-    margin-left: 15px;
+    text-align: center;
+}
+
+#divMenuLateral.menu-fechado>#menuLateral div[role="button"]:hover div.divImagemMenuLateral{
+    transition-timing-function: cubic-bezier(.67,.03,.57,.95);
+    transition-duration: 100ms;
+    transition-delay: 0ms;
+    border-radius: 15px;
+    background-color: #80008063;
+}
+
+#divMenuLateral.menu-fechado>#menuLateral div[role="button"]{
+    justify-content: center!important;
 }
 
 #divMenuLateral.menu-fechado>#menuLateral div[role="button"] label, #divMenuLateral.menu-fechado>#menuLateral div[role="button"] div.align-self-center{
