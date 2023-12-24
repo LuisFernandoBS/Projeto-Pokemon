@@ -30,7 +30,7 @@ export default function LayoutInterno({
             </Row>
             <MenuLateral id="menuLateral" menuMinimizado={isMenuMinimized} />
           </Col>
-          <Col sm md lg xl="auto">
+          <Col sm md lg xl="auto" className='flex-fill'>
             <Container fluid className={styles.main}>{children}</Container>
           </Col>
         </Row>

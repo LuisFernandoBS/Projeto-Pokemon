@@ -13,6 +13,10 @@ const MenuLateral: React.FC<MenuLateralProps> = ({ id, menuMinimizado }) => {
   const classDivImagem = `divImagemMenuLateral ${menuMinimizado ? 'py-2' : ''}`;
   const classImagem = `${menuMinimizado ? '' : 'me-2'}`;
 
+  const redirecionarPage = (ref:string) => {    
+    window.location.href = ref;
+  };
+
   return (
     <Row className="flex-column d-inline-flex h-100 px-2" id={id}>
       <Col sm md lg xl="12" className='d-flex mt-1 align-items-center mb-3' href="#home">
@@ -29,7 +33,7 @@ const MenuLateral: React.FC<MenuLateralProps> = ({ id, menuMinimizado }) => {
       </Col>
       <Col sm md lg xl="auto" className='px-4'>
       <hr className='mt-1' />
-        <Row href="home" className='mt-4 py-2' role="button">
+        <Row onClick={() => redirecionarPage('/home')} className='mt-4 py-2' role="button">
           <Col sm md lg xl={tamanhoColImagem} className={classDivImagem}>
             <Image className={classImagem} src="/img/principal.png" rounded  width={30} height={30}/>
           </Col>
@@ -37,7 +41,7 @@ const MenuLateral: React.FC<MenuLateralProps> = ({ id, menuMinimizado }) => {
             <label role="button">DASHBOARD</label>
           </Col>
         </Row>
-        <Row href="#profile" className='mt-4 py-2' role="button">
+        <Row onClick={() => redirecionarPage('/admin')} className='mt-4 py-2' role="button">
           <Col sm md lg xl={tamanhoColImagem} className={classDivImagem}>
             <Image className={classImagem} src="/img/star.png" rounded  width={30} height={30}/>
           </Col>
@@ -45,7 +49,7 @@ const MenuLateral: React.FC<MenuLateralProps> = ({ id, menuMinimizado }) => {
             <label role="button">ADMIN</label> 
           </Col>
         </Row>
-        <Row href="#settings" className='mt-4 py-2' role="button">
+        <Row onClick={() => redirecionarPage('settings')} className='mt-4 py-2' role="button">
           <Col sm md lg xl={tamanhoColImagem} className={classDivImagem}>
             <Image className={classImagem} src="/img/exit.png" rounded  width={30} height={30}/>
           </Col>
