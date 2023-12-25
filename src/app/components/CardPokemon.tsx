@@ -3,16 +3,19 @@ import Card from 'react-bootstrap/Card';
 
 interface CardPokemonProps {
     img: string;
+    id: string;
 }
 
-const CardPokemon: React.FC<CardPokemonProps> = ({ img }) => {
-  let urlImagem = `${img}/high.webp`
+const CardPokemon: React.FC<CardPokemonProps> = ({ img,id }) => {
+  let urlImagem = `${img}/low.png`
     return (
-        <Card style={{ width: '18rem' }}>
+        <Card id={'card'+id} className='border rounded-5' style={{ width: '18rem' }}>
           <Card.Img variant="top" src={urlImagem} />
-          <Card.Body>
-            <Card.Title>Card Title</Card.Title>
-            <Button variant="primary">Visualizar</Button>
+          <div className='divImgCardEfect'>
+            <div className='divImgCard'></div>
+          </div>
+          <Card.Body className='p-0'>
+            <Button className='w-100' size='lg' variant="primary">Visualizar</Button>
           </Card.Body>
         </Card>
       );

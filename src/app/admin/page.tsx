@@ -13,39 +13,47 @@ interface PokemonCard {
 }
 
 export default function Admin() {
+  let requisicaoInicial = 1;
   const classeMain = `p-1 ${styles.main}`;
   
   const [listaCardsRequisicao, setListaCardsRequisicao] = useState<PokemonCard[]>([]);
+  const [pagina, setPagina] = useState(0);
 
   const buscarListaCardPokemon  = async () => {
+    requisicaoInicial -= 1;
     try {
       const resposta = await axios.get('https://api.tcgdex.net/v2/pt/cards');
 
-      let arrayCortado = resposta.data.slice(100);
-      setListaCardsRequisicao(arrayCortado);
-      console.log('O componente foi inicializado!');
+      let listaCards = validarPaginarObjetos(resposta.data);    
+      setListaCardsRequisicao(listaCards);
     } catch (erro:any) {
       console.error('Erro na requisição:', erro.message);
     }
   };
 
   useEffect(() => {
-    buscarListaCardPokemon();
+    requisicaoInicial && buscarListaCardPokemon();
   }, []);
+
+  const validarPaginarObjetos  = (lista: PokemonCard[][]) => {
+    let listaObjetosValidos = lista.flat().filter((card: PokemonCard) => {
+      return card.image && card.id;
+    });
+    return listaObjetosValidos;
+  }
 
   return (
     <main className={classeMain}>
-      <Container>
+      <div>
         <Row>
           <Col className="text-center" sm md lg xl={12}><h3>Admin</h3></Col>
         </Row>
-        <Row>
+        <Row className='mt-4'>
             <Col sm md lg xl={12}>
-              <ListaCards lista={listaCardsRequisicao} />
+              <ListaCards lista={listaCardsRequisicao} pagina={pagina} />
             </Col>
         </Row>
-      </Container>
-        
+      </div>
     </main>
   )
 }

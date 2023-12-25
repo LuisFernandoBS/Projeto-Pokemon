@@ -2,7 +2,6 @@
 import { useState } from 'react';
 import MenuLateral from '../components/MenuLateral'
 import { Container, Row, Col } from 'react-bootstrap';
-import styles from '../styles/page.module.css'
 import '../styles/layout.css'
 
 export default function LayoutInterno({
@@ -20,7 +19,7 @@ export default function LayoutInterno({
     const iconeBtnRecolheMenu = `${isMenuMinimized ? '>' : '<'}`;
 
     return (
-      <Container fluid>
+      <Container fluid className='overflow--hidden'>
         <Row >
           <Col sm md lg xl="auto" className={divMenuLateralClasses} id="divMenuLateral">
             <Row className='justify-content-end pe-3 mt-2'>
@@ -30,8 +29,8 @@ export default function LayoutInterno({
             </Row>
             <MenuLateral id="menuLateral" menuMinimizado={isMenuMinimized} />
           </Col>
-          <Col sm md lg xl="auto" className='flex-fill'>
-            <Container fluid className={styles.main}>{children}</Container>
+          <Col sm md lg xl="10" className='flex-fill'>
+            <Container fluid className='px-0'>{children}</Container>
           </Col>
         </Row>
       </Container>
