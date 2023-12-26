@@ -49,7 +49,7 @@ const MenuLateral: React.FC<MenuLateralProps> = ({ id, menuMinimizado }) => {
             <label role="button">ADMIN</label> 
           </Col>
         </Row>
-        <Row onClick={() => redirecionarPage('settings')} className='mt-4 py-2' role="button">
+        <Row onClick={() => redirecionarPage('/')} className='mt-4 py-2' role="button">
           <Col sm md lg xl={tamanhoColImagem} className={classDivImagem}>
             <Image className={classImagem} src="/img/exit.png" rounded  width={30} height={30}/>
           </Col>

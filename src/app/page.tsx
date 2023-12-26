@@ -7,7 +7,10 @@ import './styles/login/style.css';
 
 export default function Home() {
 
-    const classMain = `background__login flex-column justify-content-center ${styles.main}`
+    const classMain = `background__login flex-column justify-content-center ${styles.main}`;
+    const redirecionarPage = (ref:string) => {    
+      window.location.href = ref;
+    };
 
   return (
     <main className={classMain}>
@@ -43,7 +46,7 @@ export default function Home() {
             </Form.Group>
             <Form.Group as={Row} className="mt-4 justify-content-center">
               <Col className="mt-md-4" xs={12} sm={6} md={4} xl={3} xxl={2}>
-                <Button className="mt-4 w-100" variant="primary" type="submit">
+                <Button onClick={() => redirecionarPage('/admin')} className="mt-4 w-100" variant="primary" type="button">
                   Entrar
                 </Button>
               </Col>
@@ -52,7 +55,7 @@ export default function Home() {
         </Row>
         <Row className="mt-5 justify-content-center">
           <Col className="mt-5" xs={12} sm={6} md={4} xl={3} xxl={2}>
-            <Button className="mt-5 w-100" variant="primary" type="submit">
+            <Button onClick={() => redirecionarPage('/cadastro')} className="mt-5 w-100" variant="primary" type="button">
               Cadastrar Usuario
             </Button>
           </Col>
