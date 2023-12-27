@@ -1,7 +1,7 @@
 "use client"
 import React, { useEffect , useState } from 'react';
 import axios from 'axios';
-import {Container, Row, Col} from 'react-bootstrap';
+import {Row, Col} from 'react-bootstrap';
 import styles from '../styles/page.module.css'
 import ListaCards from '../components/ListaCards'
 
@@ -17,7 +17,6 @@ export default function Admin() {
   const classeMain = `p-1 ${styles.main}`;
   
   const [listaCardsRequisicao, setListaCardsRequisicao] = useState<PokemonCard[]>([]);
-  const [pagina, setPagina] = useState(0);
 
   const buscarListaCardPokemon  = async () => {
     requisicaoInicial -= 1;
@@ -50,7 +49,7 @@ export default function Admin() {
         </Row>
         <Row className='mt-4'>
             <Col sm md lg xl={12}>
-              <ListaCards lista={listaCardsRequisicao} pagina={pagina} />
+              <ListaCards lista={listaCardsRequisicao} id='listaCardsPokemon' />
             </Col>
         </Row>
       </div>

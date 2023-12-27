@@ -8,7 +8,7 @@
     background-color: #8a439a;
     color: #ffffff;
     font-weight: bolder;
-    font-family: monospace;
+    font-family: monospace!important;
     border-radius: 20px;
     text-align: center;
     cursor: pointer;

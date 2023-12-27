@@ -1,0 +1,16 @@
+.pagination a{
+    color: #800080ba;
+    font-weight: 700;
+}
+
+.pagination a:hover{
+    background-color: #833695c9;
+    color: white;
+}
+
+.pagination .active span,.pagination .active{
+    border-color: #800080ba;
+    background-color: #800080ba;
+    color: white;
+}
+
