@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import {Row, Col} from 'react-bootstrap';
-import CardPokemon from '../components/CardPokemon';
+import CardPokemon from '../components/CardPokemonEfeito';
 import Paginacao from '../components/Paginacao';
 
 interface PokemonCard {
@@ -46,10 +46,10 @@ const ListaCardsPokemon: React.FC<ListaCardsProps> = ({ lista,id="listaCardsPoke
 
     return (
         <div>
-            <Row xs={1} sm={3} md={4} lg={4} xl={4} xxl={5} className="gx-2 gy-4" id={id}>
+            <Row xs={1} sm={3} md={4} lg={4} xl={4} xxl={4} className="gx-2 gy-4" id={id}>
             {listaPaginaSelecionada?.map((card) => (
                 <Col key={card.id}>
-                <CardPokemon id={card.localId} img={card.image}/>
+                <CardPokemon id={card.localId} url={card.image}/>
                 </Col>
             ))}
             </Row>
