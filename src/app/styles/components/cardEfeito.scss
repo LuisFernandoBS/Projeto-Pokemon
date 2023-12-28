@@ -112,68 +112,7 @@
     z-index: 2;
     filter: brightness(1) contrast(1);
     transition: all .33s ease;
-  }
-  
-  .card.efect.lendary_1:hover:after {
-    opacity: 1;
-    background-image: url("../../../../public/img/efeitos/estralado.webp"), 
-      url("../../../../public/img/efeitos/gliter.webp"), 
-      linear-gradient(125deg, rgba(187,254,230,1) 0%, rgba(98,250,171,0.17970938375350143) 34%, rgba(255,255,255,0.18) 61%, rgba(210,107,254,1) 98%)!important;
-    background-position: 50% 50%;
-    background-size: 100%;
-    background-blend-mode: overlay;
-    z-index: 2;
-    filter: brightness(1) contrast(1);
-    // transition: all .33s ease;
-    mix-blend-mode: color-dodge;
-    opacity: .75;
-  }
-
-  .card.efect.lendary_2:hover:after {
-    opacity: 1;
-    background-image: url("../../../../public/img/efeitos/estralado.webp"), 
-      url("../../../../public/img/efeitos/gliter.webp"), 
-      linear-gradient(125deg, rgba(187,254,230,1) 0%, rgba(98,250,171,0.17970938375350143) 34%, rgba(255,255,255,0.18) 61%, rgba(210,107,254,1) 98%)!important;
-    background-position: 50% 50%;
-    background-size: 100%;
-    background-blend-mode: overlay;
-    z-index: 2;
-    filter: brightness(1) contrast(1);
-    // transition: all .33s ease;
-    mix-blend-mode: color-dodge;
-    opacity: .75;
-  }
-
-  .card.efect.lendary_3:hover:after {
-    opacity: 1;
-    background-image: url("../../../../public/img/efeitos/estralado.webp"), 
-      url("../../../../public/img/efeitos/gliter.webp"), 
-      linear-gradient(125deg, rgba(187,254,230,1) 0%, rgba(98,250,171,0.17970938375350143) 34%, rgba(255,255,255,0.18) 61%, rgba(210,107,254,1) 98%)!important;
-    background-position: 50% 50%;
-    background-size: 100%;
-    background-blend-mode: overlay;
-    z-index: 2;
-    filter: brightness(1) contrast(1);
-    // transition: all .33s ease;
-    mix-blend-mode: color-dodge;
-    opacity: .75;
-  }
-
-  .card.efect.lendary_4:hover:after {
-    opacity: 1;
-    background-image: url("../../../../public/img/efeitos/estralado.webp"), 
-      url("../../../../public/img/efeitos/grass.png"), 
-      linear-gradient(125deg, #ff008450 15%, #fca40040 30%, #ffff0030 40%, #00ff8a20 60%, #00cfff40 70%, #cc4cfa50 85%);
-    background-position: 50% 50%;
-    background-size: 100%;
-    background-blend-mode: overlay;
-    z-index: 2;
-    filter: brightness(1) contrast(1);
-    // transition: all .33s ease;
-    mix-blend-mode: color-dodge;
-    opacity: .25;
-  }
-  
+  }  
   .card.active:after,
   .card:hover:after {
     filter: brightness(1) contrast(1);;
@@ -317,6 +256,7 @@
     font-size: 6vh;
   }  
   
+  // Animações
   .cards .card {
     &:nth-child(2) {
       &, &:before, &:after {
@@ -363,4 +303,65 @@
     to {
       transform: scale3d(1, 1, 1);
     }
+  }
+
+  // Backgrounds
+  .card.efect.lendary_1:hover:after {
+    opacity: 1;
+    background-image: url("../../../../public/img/efeitos/estralado.webp"), 
+      url("../../../../public/img/efeitos/gliter.webp"), 
+      linear-gradient(125deg, rgba(187,254,230,1) 0%, rgba(98,250,171,0.17970938375350143) 34%, rgba(255,255,255,0.18) 61%, rgba(210,107,254,1) 98%)!important;
+    background-position: 50% 50%;
+    background-size: 100%;
+    background-blend-mode: overlay;
+    z-index: 2;
+    filter: brightness(1) contrast(1);
+    // transition: all .33s ease;
+    mix-blend-mode: color-dodge;
+    opacity: .75;
+  }
+
+  .card.efect.lendary_2:hover:after {
+    opacity: 1;
+    background-image: url("../../../../public/img/efeitos/estralado.webp"), 
+      url("../../../../public/img/efeitos/gliter.webp"), 
+      linear-gradient(125deg, rgba(187,254,230,1) 0%, rgba(98,250,171,0.17970938375350143) 34%, rgba(255,255,255,0.18) 61%, rgba(210,107,254,1) 98%)!important;
+    background-position: 50% 50%;
+    background-size: 100%;
+    background-blend-mode: overlay;
+    z-index: 2;
+    filter: brightness(1) contrast(1);
+    // transition: all .33s ease;
+    mix-blend-mode: color-dodge;
+    opacity: .75;
+  }
+
+  .card.efect.lendary_3:hover:after {
+    opacity: 1;
+    background-image: url("../../../../public/img/efeitos/estralado.webp"), 
+      url("../../../../public/img/efeitos/gliter.webp"), 
+      linear-gradient(125deg, rgba(187,254,230,1) 0%, rgba(98,250,171,0.17970938375350143) 34%, rgba(255,255,255,0.18) 61%, rgba(210,107,254,1) 98%)!important;
+    background-position: 50% 50%;
+    background-size: 100%;
+    background-blend-mode: overlay;
+    z-index: 2;
+    filter: brightness(1) contrast(1);
+    // transition: all .33s ease;
+    mix-blend-mode: color-dodge;
+    opacity: .75;
+  }
+
+  .card.efect.lendary_4:hover:after {
+    opacity: 1;
+    background-image: url("../../../../public/img/efeitos/estralado.webp"), 
+      url("../../../../public/img/efeitos/grass.png"), 
+      linear-gradient(125deg, #ff008450 15%, #fca40040 30%, #ffff0030 40%, #00ff8a20 60%, #00cfff40 70%, #cc4cfa50 85%);
+    background-position: 50% 50%;
+    background-size: 100%;
+    background-blend-mode: overlay;
+    z-index: 2;
+    filter: brightness(1) contrast(1);
+    // transition: all .33s ease;
+    mix-blend-mode: color-dodge;
+    opacity: .25;
   }
