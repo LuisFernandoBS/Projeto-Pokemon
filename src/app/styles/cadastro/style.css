@@ -1,0 +1,172 @@
+.background__cadastro {
+  background-image: url(../../../../public/img/backgroun-cadastro.jpg);
+  background-size: cover;
+}
+
+.img__pokebola {
+  width: 256px;
+  height: 256px;
+  background-image: url(../../../../public/img/pokebola.png);
+  background-size: cover;
+  animation: fadePokebola 3s;
+}
+
+@keyframes fadePokebola {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 100%;
+  }
+}
+
+.card {
+  border-color: transparent !important;
+  background-color: transparent !important;
+}
+
+.fundo__form-cadastro {
+  --bs-bg-opacity: 0.5;
+  background-color: rgba(var(--bs-dark-rgb), var(--bs-bg-opacity)) !important;
+  border-radius: 8px;
+}
+
+.carousel-control-next-icon {
+  background-image: url(../../../../public/img/icone-seta-direita.png);
+}
+
+.carousel-control-prev-icon {
+  background-image: url(../../../../public/img/icone-seta-esquerda.png);
+}
+
+.carousel-control-next,
+.carousel-control-prev {
+  color: #fff !important;
+  text-decoration: none !important;
+  outline: 0 !important;
+  opacity: 1 !important;
+}
+
+.carousel-control-next:focus,
+.carousel-control-next:hover,
+.carousel-control-prev:focus,
+.carousel-control-prev:hover {
+  color: #fff;
+  text-decoration: none;
+  outline: 0;
+  opacity: 1;
+}
+
+#divGridCartas {
+  display: none;
+}
+
+.img_cadastro {
+  z-index: 2;
+  padding: 8px;
+}
+
+.card__cadastro {
+  position: relative;
+  width: auto;
+  height: auto;
+  color: #fff;
+  background: blue;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+}
+
+.card__cadastro:hover::before,
+.card__cadastro:hover::after {
+  content: "";
+  position: absolute;
+  z-index: 1;
+  width: calc(100% + 30px);
+  height: calc(100% + 30px);
+}
+
+.card__bulbasaur:hover::before,
+.card__bulbasaur:hover::after {
+  background: linear-gradient(
+    45deg,
+    #37ff00,
+    #24d124,
+    #00910a,
+    #06de84,
+    #2bba04,
+    #37ff00,
+    #24d124,
+    #00910a,
+    #06de84,
+    #2bba04,
+    #37ff00,
+    #00910a
+  );
+  background-size: 300%;
+  border-radius: 8px;
+  animation: AnimarCard 8s linear infinite;
+}
+
+.card__charmander:hover::before,
+.card__charmander:hover::after {
+  background: linear-gradient(
+    45deg,
+    #ffff00,
+    #ff8c00,
+    #ff8c00,
+    #ff0000,
+    #eeff00,
+    #ff5e00,
+    #ff0000,
+    #eeff00,
+    #ff0000,
+    #eeff00,
+    #ff8c00,
+    #ff0000
+  );
+  background-size: 300%;
+  border-radius: 8px;
+  animation: AnimarCard 8s linear infinite;
+}
+
+.card__squirtle:hover::before,
+.card__squirtle:hover::after {
+  background: linear-gradient(
+    45deg,
+    #03eaff,
+    #02a2ff,
+    #0040ff,
+    #0008ff,
+    #00ecfd,
+    #0683dc,
+    #03eaff,
+    #02a2ff,
+    #0040ff,
+    #0008ff,
+    #00ecfd,
+    #0683dc
+  );
+  background-size: 300%;
+  border-radius: 8px;
+  animation: AnimarCard 8s linear infinite;
+}
+
+@keyframes AnimarCard {
+  0% {
+    background-position: 0;
+  }
+  100% {
+    background-position: 300%;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  #divCarroselCartas {
+    display: none;
+  }
+  #divGridCartas {
+    display: flex;
+  }
+}
