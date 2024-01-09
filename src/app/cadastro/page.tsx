@@ -1,12 +1,19 @@
 "use client";
 import Form from "react-bootstrap/Form";
+import React, { useState, useEffect } from "react";
 import CardPokemon from "../components/CardPokemon";
 import { Container, Carousel, Button, Row, Col, Card } from "react-bootstrap";
 import styles from "../styles/page.module.css";
 import "../styles/cadastro/style.css";
+import axios, { Axios } from "axios";
 
 export default function CadastroUsuario() {
   const classMain = `background__cadastro flex-column justify-content-center px-2 ${styles.main}`;
+  const [cartaUsuario, setCartaUsuario] = React.useState("");
+  const [nomeUsuario, setNomeUsuario] = React.useState("");
+  const [loginUsuario, setLoginUsuario] = React.useState("");
+  const [senhaUsuario, setSenhaUsuario] = React.useState("");
+
   const redirecionarPage = (ref: string) => {
     window.location.href = ref;
   };
@@ -23,7 +30,29 @@ export default function CadastroUsuario() {
 
     if (textoEscolherPokemon) {
       textoEscolherPokemon.textContent = `Parabens seu ${cartaEscolhida} foi capturado!`;
+      setCartaUsuario(cartaEscolhida);
     }
+  };
+
+  const cadastrarUsuario = async () => {
+    const dadosRequisicao = {
+      nome: nomeUsuario,
+      user: loginUsuario,
+      senha: senhaUsuario,
+      carta: cartaUsuario,
+    };
+
+    await axios
+      .post(
+        "https://api-projeto-pokemon.vercel.app/api/usuario",
+        dadosRequisicao
+      )
+      .then(function (response) {
+        console.log("response", response);
+      })
+      .catch(function (error) {
+        console.log("error", error);
+      });
   };
 
   return (
@@ -63,6 +92,10 @@ export default function CadastroUsuario() {
                   <Col xs={12} md={8} xl={6} xxl={5}>
                     <Form.Control
                       type="text"
+                      value={nomeUsuario}
+                      onChange={(e) => {
+                        setNomeUsuario(e.target.value);
+                      }}
                       placeholder="Informe como gostaria de ser chamado."
                     />
                   </Col>
@@ -84,7 +117,14 @@ export default function CadastroUsuario() {
                 </Row>
                 <Row className="justify-content-center">
                   <Col xs={12} md={8} xl={6} xxl={5}>
-                    <Form.Control type="text" placeholder="Informe um login." />
+                    <Form.Control
+                      type="text"
+                      placeholder="Informe um login."
+                      value={loginUsuario}
+                      onChange={(e) => {
+                        setLoginUsuario(e.target.value);
+                      }}
+                    />
                   </Col>
                 </Row>
               </Form.Group>
@@ -107,6 +147,10 @@ export default function CadastroUsuario() {
                     <Form.Control
                       type="password"
                       placeholder="Informe uma senha."
+                      value={senhaUsuario}
+                      onChange={(e) => {
+                        setSenhaUsuario(e.target.value);
+                      }}
                     />
                   </Col>
                 </Row>
@@ -202,7 +246,7 @@ export default function CadastroUsuario() {
               <Form.Group as={Row} className="mt-4 justify-content-center">
                 <Col className="mt-md-4" xs={12} sm={6} md={4} xl={3} xxl={2}>
                   <Button
-                    onClick={() => redirecionarPage("/admin")}
+                    onClick={() => cadastrarUsuario()}
                     className="mt-4 w-100"
                     variant="primary"
                     type="button"
