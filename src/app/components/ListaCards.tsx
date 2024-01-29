@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import {Row, Col} from 'react-bootstrap';
 import CardPokemon from '../components/CardPokemonEfeito';
+import DetalhesCard from '../components/DetalhesCard';
 import Paginacao from '../components/Paginacao';
 
 interface PokemonCard {
@@ -21,6 +22,8 @@ const ListaCardsPokemon: React.FC<ListaCardsProps> = ({ lista,id="listaCardsPoke
     const [paginaSelecionada, setPaginaSelecionada] = React.useState(1);
     const [listaPaginada, setListaPaginada] = React.useState<PokemonCard[][]>([]);
     const [listaPaginaSelecionada, setListaPaginaSelecionada] = React.useState<PokemonCard[]>();
+    const [show, setShow] = useState(false);
+    const [urlImgem, setUrlImgem] = useState("");
 
     useEffect(() => {
         const novaListaPaginada = lista.reduce((acc: PokemonCard[][], item: PokemonCard, index: number) => {
@@ -43,12 +46,16 @@ const ListaCardsPokemon: React.FC<ListaCardsProps> = ({ lista,id="listaCardsPoke
     setPaginaSelecionada(page);
     };
     
+    const abrirImagem = (url:string) => {
+        setUrlImgem(`${url}/high.png`)
+        setShow(true);
+    }
 
     return (
         <div>
             <Row xs={1} sm={3} md={4} lg={4} xl={4} xxl={4} className="gx-2 gy-4" id={id}>
             {listaPaginaSelecionada?.map((card) => (
-                <Col key={card.id}>
+                <Col key={card.id} onClick={() => abrirImagem(card.image)}>
                 <CardPokemon id={card.localId} url={card.image}/>
                 </Col>
             ))}
@@ -58,6 +65,7 @@ const ListaCardsPokemon: React.FC<ListaCardsProps> = ({ lista,id="listaCardsPoke
                     <Paginacao qtdPaginas={qtdPaginas} paginaAtual={paginaSelecionada} funcaoListagem={selecionaPagina}/>
                 </Col>
             </Row>
+            <DetalhesCard url={urlImgem}  showModal={show} fecharModal={setShow}/>
         </div>
     );
 

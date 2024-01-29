@@ -1,7 +1,9 @@
 'use client';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { parseCookies } from 'nookies';
 import MenuLateral from '../components/MenuLateral'
 import { Container, Row, Col } from 'react-bootstrap';
+import {AuthContext} from "../../context/AutorizadorContext";
 import '../styles/layout.css'
 
 export default function LayoutInterno({
@@ -10,6 +12,13 @@ export default function LayoutInterno({
     children: React.ReactNode
   }) {
     const [isMenuMinimized, setMenuMinimized] = useState(false);
+
+    useEffect(()=>{
+      const { ['nextauth.token']: token } = parseCookies();
+      if (!token) {
+        window.location.href = '/';
+      }      
+    },[])
 
     const toggleMenu = () => {
         setMenuMinimized(!isMenuMinimized);

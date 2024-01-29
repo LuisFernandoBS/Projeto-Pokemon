@@ -1,0 +1,29 @@
+
+  .glass-modal,.modal-backdrop {
+    background: rgba( 185, 97, 255, 0 );
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    backdrop-filter: blur( 0px );
+    -webkit-backdrop-filter: blur( 0px );
+    border-radius: 10px;
+    border: 1px solid rgba( 255, 255, 255, 0.18 );
+  }
+
+  .glass-modal>.modal-dialog>.modal-content {
+    background: rgba( 185, 97, 255, 0.2 );
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    backdrop-filter: blur( 0px );
+    -webkit-backdrop-filter: blur( 0px );
+    border-radius: 10px;
+    border: 1px solid rgba( 255, 255, 255, 0.18 );
+  }
+
+  .modal-90w{
+    width: fit-content;
+    min-width: auto;
+  }
+
+  .modal-90w .imgCardDetalhesCard{
+    width: 28vw;
+  }
+
+
