@@ -5,7 +5,7 @@ import { Form, Button, Row, Col } from "react-bootstrap";
 import { setCookie, parseCookies } from 'nookies'
 import axios from 'axios';
 import { useDispatch } from 'react-redux';
-import { setNome } from '../store/features/usuario/usuario-slice.ts';
+import { setUsuario } from '../store/features/usuario/usuario-slice.ts';
 
 
 type DataResp = {
@@ -41,7 +41,6 @@ const FormLogin = ()=>{
               setCookie(undefined, 'nextauth.token', response.data.result['token'], {
                   maxAge: 60 * 60 * 1, // 1 hour
               })
-              await consultarUsuario(user);
           }
           return response.data;
       })
@@ -53,20 +52,25 @@ const FormLogin = ()=>{
       return resp;
     }
 
-    async function consultarUsuario(usuario : string ) {
+    async function consultarUsuario() {
         const { ['nextauth.token']: token } = parseCookies();
 
-        let resp = await axios.get('https://api-projeto-pokemon.vercel.app/api/usuarios/' + usuario,{
+        let resp = await axios.get('https://api-projeto-pokemon.vercel.app/api/usuario/consulta-dados-usuario',{
             headers: {
                 'Authorization': `Bearer ${token}`
             }
         })
-        .then(function (response) {        
-            if (response.data.result) {            
-                console.log(response.data.result);
-                
+        .then(function (response) {   
+            if (response.data.result) {     
+                let dadosRetorno = response.data.result;               
+                dispatch(setUsuario({
+                    nome:dadosRetorno.nome,
+                    admin:dadosRetorno.admin,
+                    cartaSelecionada:dadosRetorno.carta_selecionada,
+                    user:dadosRetorno.user
+                }));
             }
-            return response.data;
+            return;
         })
         .catch(function (error:object) {
             return error;
@@ -83,8 +87,8 @@ const FormLogin = ()=>{
       };
       let resp:DataResp = await logar(dadosRequisicao);
       if (!resp.error && resp.statusCode === 200) {
-        dispatch(setNome({nome:loginUsuario,admin:false}));   
-        // redirecionarPage('/admin');
+        await consultarUsuario();
+        redirecionarPage('/admin');
       }else{
         alert(resp.message);
       }
