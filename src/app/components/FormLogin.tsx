@@ -1,42 +1,94 @@
 'use client'
 
-import React, { useContext } from "react";
-import { Form, Container, Button, Row, Col } from "react-bootstrap";
-import {useAuthContext} from "../../context/AutorizadorContext";
+import React from "react";
+import { Form, Button, Row, Col } from "react-bootstrap";
+import { setCookie, parseCookies } from 'nookies'
+import axios from 'axios';
+import { useDispatch } from 'react-redux';
+import { setNome } from '../store/features/usuario/usuario-slice.ts';
+
 
 type DataResp = {
     error: boolean,
     message: string,
     statusCode: number,
     result: object
-  }
+}
+
+type SignInData = {
+  user: string;
+  senha: string;
+}
 
 
 const FormLogin = ()=>{
-    const { logar,usuario,setUsuario } = useAuthContext();
+    const dispatch = useDispatch();
 
     const [loginUsuario, setLoginUsuario] = React.useState("");
     const [senhaUsuario, setSenhaUsuario] = React.useState("");
 
     const redirecionarPage = (ref: string) => {
         window.location.href = ref;
-      };
+    };
+
+    async function logar({ user, senha }: SignInData) {
+      let resp = await axios.post('https://api-projeto-pokemon.vercel.app/api/logar', {
+          user: user,
+          senha: senha
+      })
+      .then(async function (response) {        
+          if (response.data.result['token']) {            
+              setCookie(undefined, 'nextauth.token', response.data.result['token'], {
+                  maxAge: 60 * 60 * 1, // 1 hour
+              })
+              await consultarUsuario(user);
+          }
+          return response.data;
+      })
+      .catch(function (error:object) {
+          return error;
+      });
       
-      async function realizarLogin() {
-        const dadosRequisicao = {
-          user: loginUsuario,
-          senha: senhaUsuario,
-        };
-        let resp:DataResp = await logar(dadosRequisicao);
-        console.log(resp);
-        if (!resp.error && resp.statusCode === 200) {
-          setUsuario('Pondian');
-          console.log(usuario);
-        //   redirecionarPage('/admin');
-        }else{
-          alert(resp.message);
-        }
+  
+      return resp;
+    }
+
+    async function consultarUsuario(usuario : string ) {
+        const { ['nextauth.token']: token } = parseCookies();
+
+        let resp = await axios.get('https://api-projeto-pokemon.vercel.app/api/usuarios/' + usuario,{
+            headers: {
+                'Authorization': `Bearer ${token}`
+            }
+        })
+        .then(function (response) {        
+            if (response.data.result) {            
+                console.log(response.data.result);
+                
+            }
+            return response.data;
+        })
+        .catch(function (error:object) {
+            return error;
+        });
+        
+
+        return resp;
+    }
+      
+    async function realizarLogin() {
+      const dadosRequisicao = {
+        user: loginUsuario,
+        senha: senhaUsuario,
+      };
+      let resp:DataResp = await logar(dadosRequisicao);
+      if (!resp.error && resp.statusCode === 200) {
+        dispatch(setNome({nome:loginUsuario,admin:false}));   
+        // redirecionarPage('/admin');
+      }else{
+        alert(resp.message);
       }
+    }
 
     return(
         <>

@@ -1,8 +1,8 @@
-import type { Metadata } from 'next'
+import type { Metadata } from 'next';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import './styles/global/fonts.css'
-import './styles/global/globals.css'
-import { AutorizadorProvider } from '../context/AutorizadorContext'
+import './styles/global/fonts.css';
+import './styles/global/globals.css';
+import Providers from "./components/Providers";
 
 export const metadata: Metadata = {
   title: 'Projeto Pokemon',
@@ -17,9 +17,9 @@ export default function RootLayout({
   return (
     <html lang="en">
         <body className='overflow-hidden'>
-          <AutorizadorProvider>
-            {children}
-          </AutorizadorProvider>
+          <Providers>
+              {children}
+          </Providers>          
         </body>
     </html>
   )

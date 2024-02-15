@@ -1,11 +1,11 @@
 "use client"
-import React, { useEffect , useState, useContext } from 'react';
+import React, { useEffect , useState } from 'react';
 import axios from 'axios';
 import {Row, Col} from 'react-bootstrap';
+import { useAppSelector } from "../store/hooks.ts";
 
 import styles from '../styles/page.module.css'
 import ListaCards from '../components/ListaCards'
-import { AuthContext } from '../../context/AutorizadorContext';
 
 interface PokemonCard {
   id: number;
@@ -15,11 +15,11 @@ interface PokemonCard {
 }
 
 export default function Admin() {
-  const { usuario } = useContext(AuthContext);
 
   let requisicaoInicial = 1;
   const classeMain = `p-1 ${styles.main}`;
   
+  const usuario = useAppSelector((state) => state.usuario);
   const [listaCardsRequisicao, setListaCardsRequisicao] = useState<PokemonCard[]>([]);
 
   const buscarListaCardPokemon  = async () => {
@@ -34,9 +34,8 @@ export default function Admin() {
     }
   };
 
-  useEffect(() => {
+  useEffect(() => {    
     console.log(usuario);
-    
     requisicaoInicial && buscarListaCardPokemon();
   }, []);
 

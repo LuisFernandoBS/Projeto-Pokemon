@@ -1,11 +1,10 @@
 "use client";
 import Form from "react-bootstrap/Form";
-import React, { useState, useEffect } from "react";
-import CardPokemon from "../components/CardPokemon";
+import React from "react";
 import { Container, Carousel, Button, Row, Col, Card } from "react-bootstrap";
 import styles from "../styles/page.module.css";
 import "../styles/cadastro/style.css";
-import axios, { Axios } from "axios";
+import axios from "axios";
 
 export default function CadastroUsuario() {
   const classMain = `background__cadastro flex-column justify-content-center px-2 ${styles.main}`;
@@ -13,10 +12,6 @@ export default function CadastroUsuario() {
   const [nomeUsuario, setNomeUsuario] = React.useState("");
   const [loginUsuario, setLoginUsuario] = React.useState("");
   const [senhaUsuario, setSenhaUsuario] = React.useState("");
-
-  const redirecionarPage = (ref: string) => {
-    window.location.href = ref;
-  };
 
   const salvarCartaEscolhida = (cartaEscolhida: string) => {
     const divCartas = document.querySelector("#divGridCartas");

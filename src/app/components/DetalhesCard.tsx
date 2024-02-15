@@ -21,7 +21,7 @@ const DetalhesCard: React.FC<DetalhesCardProps> = ({url,fecharModal,showModal}) 
         aria-labelledby="example-custom-modal-styling-title"
         className='glass-modal'
       >
-        <Modal.Body className='px-3 py-2'>
+        <Modal.Body className='px-0 py-0'>
             <Row className="justify-content-center">
                  <Col sm="auto" md="auto" lg="auto" xl="auto" xxl="auto">
                     <img src={url} className='imgCardDetalhesCard'/>
