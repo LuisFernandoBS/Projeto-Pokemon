@@ -20,10 +20,7 @@ export const usuarioSlice = createSlice({
     initialState,
     reducers:{
         setUsuario:(state, actions:PayloadAction<UsuarioState>) => {
-            state.nome = actions.payload.nome;
-            state.cartaSelecionada = actions.payload.cartaSelecionada;
-            state.user = actions.payload.user;
-            state.admin = actions.payload.admin;
+            state = {...actions.payload}
         },
         limparNome:(state) => {
             state.nome = "";

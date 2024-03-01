@@ -3,6 +3,7 @@ import { configureStore } from "@reduxjs/toolkit";
 import { persistStore, persistReducer } from 'redux-persist'
 import storage from 'redux-persist/lib/storage'
 import { usuarioReducer } from "./features/usuario/usuario-slice";
+import { menuLateralReducer } from "./features/menu-lateral/menu-lateral-slice";
 
 const persistConfig = {
   key: 'root',
@@ -10,10 +11,12 @@ const persistConfig = {
 }
 
 const persistedUsuarioReducer = persistReducer(persistConfig, usuarioReducer)
+const persistedMenuLateralReducer = persistReducer(persistConfig, menuLateralReducer)
 
 export const store = configureStore({
   reducer: {
     usuario: persistedUsuarioReducer,
+    menu: persistedMenuLateralReducer,
   },
   middleware: getDefaultMiddleware =>
   getDefaultMiddleware({
