@@ -103,7 +103,7 @@ const FormLogin = () => {
     let resp: DataResp = await logar(dadosRequisicao);
     if (!resp.error && resp.statusCode === 200) {
       await consultarUsuario();
-      // redirecionarPage("/admin");
+      redirecionarPage("/admin");
     } else {
       alert(resp.message);
     }
