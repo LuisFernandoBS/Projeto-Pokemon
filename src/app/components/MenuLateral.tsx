@@ -1,6 +1,7 @@
 'use client';
 import React from 'react';
 import {Row, Col, Image} from 'react-bootstrap';
+import { destroyCookie } from "nookies";
 
 interface MenuLateralProps {
     id: string;
@@ -16,6 +17,12 @@ const MenuLateral: React.FC<MenuLateralProps> = ({ id, menuMinimizado }) => {
   const redirecionarPage = (ref:string) => {    
     window.location.href = ref;
   };
+
+  const sair = () => {    
+    destroyCookie(undefined, 'nextauth.token');
+    window.location.href = '/';
+  };
+
 
   return (
     <Row className="flex-column d-inline-flex h-100 px-2" id={id}>
@@ -49,7 +56,7 @@ const MenuLateral: React.FC<MenuLateralProps> = ({ id, menuMinimizado }) => {
             <label role="button">ADMIN</label> 
           </Col>
         </Row>
-        <Row onClick={() => redirecionarPage('/')} className='mt-4 py-2' role="button">
+        <Row onClick={() => sair()} className='mt-4 py-2' role="button">
           <Col sm md lg xl={tamanhoColImagem} className={classDivImagem}>
             <Image className={classImagem} src="/img/exit.png" rounded  width={30} height={30}/>
           </Col>
