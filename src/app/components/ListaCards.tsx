@@ -18,6 +18,7 @@ interface ListaCardsProps {
 
 const ListaCardsPokemon: React.FC<ListaCardsProps> = ({ lista,id="listaCardsPokemon" }) => {
     const pageSize = 10;
+    const classesPaginacao = `${lista.length == 0 ? 'd-none':''} mt-4 justify-content-center`;
     const [qtdPaginas, setQtdPaginas] = React.useState(0);
     const [paginaSelecionada, setPaginaSelecionada] = React.useState(1);
     const [listaPaginada, setListaPaginada] = React.useState<PokemonCard[][]>([]);
@@ -60,7 +61,7 @@ const ListaCardsPokemon: React.FC<ListaCardsProps> = ({ lista,id="listaCardsPoke
                 </Col>
             ))}
             </Row>
-            <Row className='mt-4 justify-content-center'>
+            <Row className={classesPaginacao}>
                 <Col sm md lg xl={3}>
                     <Paginacao qtdPaginas={qtdPaginas} paginaAtual={paginaSelecionada} funcaoListagem={selecionaPagina}/>
                 </Col>

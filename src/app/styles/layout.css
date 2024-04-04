@@ -95,6 +95,11 @@
     animation: disappearAnimation 650ms forwards;
 }
 
+.btn-padrao{
+    background-color: #8a439a;
+    border-color: #8a439a;
+}
+
 @keyframes disappearAnimation {
     0% {
       opacity: 1;
