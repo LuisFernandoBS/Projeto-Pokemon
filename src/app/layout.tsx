@@ -17,7 +17,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className="overflow-hidden">
+      <body className="overflow-hidden row justify-content-center">
         <Providers>
           <AlertaPadrao />
           {children}

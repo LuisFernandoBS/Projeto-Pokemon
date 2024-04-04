@@ -72,6 +72,12 @@ const FormLogin = () => {
         if (response.data.result) {
           let dadosRetorno = response.data.result;
           dispatch(
+            mostrarAlerta({
+              mensagem: "Login realizado com sucesso!",
+              tipo: "success",
+            })
+          );
+          dispatch(
             setUsuario({
               nome: dadosRetorno.nome,
               admin: dadosRetorno.admin,
@@ -79,16 +85,18 @@ const FormLogin = () => {
               user: dadosRetorno.user,
             })
           );
-          dispatch(
-            mostrarAlerta({
-              mensagem: "teste",
-              tipo: "success",
-            })
-          );
         }
         return;
       })
       .catch(function (error: object) {
+        dispatch(
+          mostrarAlerta({
+            mensagem:
+              "Ocorreu um ao tentar realizar o login, tente novamente mais tarde ou entre em contato!",
+            tipo: "success",
+          })
+        );
+        console.error(error);
         return error;
       });
 
@@ -105,7 +113,14 @@ const FormLogin = () => {
       await consultarUsuario();
       redirecionarPage("/admin");
     } else {
-      alert(resp.message);
+      dispatch(
+        mostrarAlerta({
+          mensagem:
+            "Ocorreu um ao tentar realizar o login, tente novamente mais tarde ou entre em contato!",
+          tipo: "danger",
+        })
+      );
+      console.error(resp.message);
     }
   }
 
